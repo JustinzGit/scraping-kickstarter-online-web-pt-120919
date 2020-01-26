@@ -1,25 +1,9 @@
 require 'nokogiri'
 require 'pry'
-require 'pp'
 
 def create_project_hash
-  
- 
-  
-  # projects: kickstarter.css("li.project.grid_4")
-  
-  # title: project.css("h2.bbcard_name strong a").text
-  
-  # image link: project.css("div.project-thumbnail a img").attribute("src").value
-  
-  # description: project.css("p.bbcard_blurb").text
-  
-  # location: project.css("ul.project-meta span.location-name").text
-  
-  # percent_funded: project.css("ul.project-stats li.first.funded strong").text.gsub("%","").to_i
-  
-  
-   # Opens file and reads into a variable 
+
+  # Opens file and reads into a variable 
   html = File.read('fixtures/kickstarter.html')
   
   # Converts html into a nodeset
@@ -29,6 +13,7 @@ def create_project_hash
   
   kickstarter.css("li.project.grid_4").each do |project|
     title = project.css("h2.bbcard_name strong a").text
+    
     projects[title.to_sym] = {
       :image_link => project.css("div.project-thumbnail a img").attribute("src").value,
       
@@ -39,10 +24,6 @@ def create_project_hash
       :percent_funded => project.css("ul.project-stats li.first.funded strong").text.gsub("%","").to_i
     }
   end 
-  
   projects
-  binding.pry
-    
 end
 
-create_project_hash
