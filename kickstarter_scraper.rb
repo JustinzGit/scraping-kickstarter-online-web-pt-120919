@@ -40,7 +40,8 @@ def create_project_hash
     }
   end 
   
-  pp projects
+  projects
+  binding.pry
     
 end
 
