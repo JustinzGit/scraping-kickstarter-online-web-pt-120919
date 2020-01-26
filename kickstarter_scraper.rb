@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'pry'
+require 'pp'
 
 def create_project_hash
   
@@ -39,7 +40,7 @@ def create_project_hash
     }
   end 
   
-  p projects
+  pp projects
     
 end
 
